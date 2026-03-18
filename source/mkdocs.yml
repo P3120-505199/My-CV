@@ -1,0 +1,38 @@
+site_name: My CV
+site_url: https://P3120-505199.github.io/My-CV/
+site_description: Резюме и портфолио
+site_author: Богун Андрей
+
+theme:
+  name: mkdocs  
+  language: ru
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: lime
+
+nav:
+  - Главная: index.md
+  - Опыт работы: experience.md
+  - Навыки: skills.md
+  - Образование: education.md
+  - Контакты: contacts.md
