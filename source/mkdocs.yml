@@ -1,6 +1,6 @@
-site_name: My CV
+site_name: Мои Лабораторные Работы
 site_url: https://P3120-505199.github.io/My-CV/
-site_description: Резюме и портфолио
+site_description: Лабораторные работы по курсу
 site_author: Богун Андрей
 
 theme:
@@ -10,40 +10,46 @@ theme:
     code: Fira Code
   language: ru
   features:
-  - navigation.tabs
-  - navigation.sections
-  - toc.integrate
-  - navigation.top
-  - navigation.tracking         
-  - navigation.expand           
-  - navigation.indexes           
-  - search.suggest
-  - search.highlight
-  - content.tabs.link
-  - content.code.annotation
-  - content.code.copy
-  - content.action.edit          
-  - content.action.view  
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - navigation.tracking         
+    - navigation.expand           
+    - navigation.indexes           
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.action.edit          
+    - content.action.view  
   palette:
-  - scheme: default
-    toggle:
-      icon: material/toggle-switch-off-outline
-      name: Switch to dark mode
-    primary: deep purple
-    accent: purple
-  - scheme: slate
-    toggle:
-      icon: material/toggle-switch
-      name: Switch to light mode
-    primary: deep purple
-    accent: pink
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: deep purple
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: deep purple
+      accent: pink
 
 nav:
   - Главная: index.md
-  - Опыт работы: experience.md
-  - Навыки: skills.md
-  - Образование: education.md
-  - Контакты: contacts.md
+  - Об авторе: about.md
+  - Лабораторные работы:
+    - Список работ: labs/index.md
+    - Лабораторная работа №1: labs/lab1.md
+    - Лабораторная работа №2: labs/lab2.md
+    - Лабораторная работа №3: labs/lab3.md
+    - Лабораторная работа №4: labs/lab4.md
+    - Лабораторная работа №5: labs/lab5.md
+    - Лабораторная работа №6: labs/lab6.md
+    - Лабораторная работа №7: labs/lab7.md
 
 extra:
   social:
@@ -56,3 +62,21 @@ extra:
     - icon: fontawesome/solid/envelope
       link: mailto:bogun_av@mail.ru
       name: Email
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_name: !!python/name:materialx.emoji.to_svg
+  - attr_list
+  - tables
+  - footnotes
+  - md_in_html
+
+extra_css:
+  - css/extra.css
