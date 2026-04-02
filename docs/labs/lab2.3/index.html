@@ -12,13 +12,9 @@
         <meta name="author" content="Богун Андрей">
       
       
-        <link rel="canonical" href="https://P3120-505199.github.io/My-CV/labs/lab4/">
+        <link rel="canonical" href="https://P3120-505199.github.io/My-CV/labs/lab2.3/">
       
       
-        <link rel="prev" href="../lab3/">
-      
-      
-        <link rel="next" href="../lab5/">
       
       
         
@@ -29,7 +25,7 @@
     
     
       
-        <title>Лабораторная работа №4 - Best CV ever</title>
+        <title>Отчёт по лабораторной работе 3 семестра 2 - Best CV ever</title>
       
     
     
@@ -82,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#4" class="md-skip">
+        <a href="#3-2" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -116,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Лабораторная работа №4
+              Отчёт по лабораторной работе 3 семестра 2
             
           </span>
         </div>
@@ -253,12 +249,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../" class="md-tabs__link">
           
   
@@ -366,8 +360,6 @@
       
   
   
-    
-  
   
   
     
@@ -397,19 +389,18 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -431,13 +422,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -538,19 +529,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lab4/" class="md-nav__link">
         
   
   
@@ -566,7 +548,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -708,115 +689,99 @@
 
 
 
-<h1 id="4">Отчёт по лабораторной работе 4</h1>
-<h1 id="_1">Выполнил Богун Андрей</h1>
+<h1 id="3-2">Отчёт по лабораторной работе 3 семестра 2</h1>
+<h2 id="cicd-sourcecraft">"CI/CD для статического сайта в SourceCraft"</h2>
+<p><strong>Выполнил:</strong> Богун Андрей Витальевич<br />
+<strong>Группа:</strong> P3120  </p>
 <hr />
-<h2 id="fact_recursive-fact_iterative">Исходный код fact_recursive и fact_iterative</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">fact_recursive</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Рекурсивный факториал&quot;&quot;&quot;</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="k">return</span> <span class="mi">1</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact_recursive</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">fact_iterative</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Нерекурсивный факториал&quot;&quot;&quot;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="n">res</span> <span class="o">*=</span> <span class="n">i</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">return</span> <span class="n">res</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">benchmark</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Возвращает среднее время выполнения func(n)&quot;&quot;&quot;</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">times</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">func</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat</span><span class="p">)</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="c1"># фиксированный набор данных</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="n">test_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="n">res_recursive</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="n">res_iterative</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">test_data</span><span class="p">:</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>      <span class="n">res_recursive</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">fact_recursive</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5000</span><span class="p">))</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>      <span class="n">res_iterative</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">fact_iterative</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5000</span><span class="p">))</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    <span class="c1"># Визуализация</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">res_recursive</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Рекурсивный&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">res_iterative</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Итеративный&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Время (сек)&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Сравнение рекурсивного и итеративного факториала&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>    <span class="n">main</span><span class="p">()</span>
+<h2 id="_1">Содержание</h2>
+<ol>
+<li><a href="#цель-работы">Цель работы</a></li>
+<li><a href="#задачи">Задачи</a></li>
+<li><a href="#структура-проекта">Структура проекта</a></li>
+<li><a href="#реализация-автоматического-деплоя">Реализация автоматического деплоя</a></li>
+<li><a href="#github-actions">GitHub Actions</a></li>
+<li><a href="#sourcecraft-cicd">SourceCraft CI/CD</a></li>
+<li><a href="#результаты">Результаты</a></li>
+<li><a href="#выводы">Выводы</a></li>
+</ol>
+<hr />
+<h2 id="_2">Цель работы</h2>
+<p>Научиться настраивать автоматическое развертывание статического сайта, построенного на движке MkDocs, с использованием двух независимых платформ: GitHub Pages (через GitHub Actions) и SourceCraft Sites (через встроенный CI/CD).</p>
+<hr />
+<h2 id="_3">Задачи</h2>
+<ol>
+<li>Создать локальный репозиторий с сайтом на MkDocs.</li>
+<li>Создать два удалённых репозитория: на GitHub и на SourceCraft.</li>
+<li>Настроить GitHub Actions для автоматической сборки и публикации сайта на GitHub Pages.</li>
+<li>Настроить SourceCraft Sites.</li>
+<li>Проверить работоспособность обоих сайтов.</li>
+</ol>
+<hr />
+<h2 id="_4">Структура проекта</h2>
+<p>Sourcecraft/ 
+├── .github/
+│ └── workflows/
+│ └── gh-pages.yml 
+├── .sourcecraft/
+│ ├── sites.yaml 
+│ └── ci.yaml 
+├── docs/
+│ ├── index.md 
+│ └── about.md 
+├── mkdocs.yml 
+├── README.md
+└── site/ </p>
+<hr />
+<h2 id="_5">Реализация автоматического деплоя</h2>
+<h3 id="github-actions">GitHub Actions</h3>
+<p>Файл <code>.github/workflows/gh-pages.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy MkDocs to GitHub Pages</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">on</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">permissions</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nt">jobs</span><span class="p">:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-22.04</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.11&#39;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs mkdocs-material</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs build</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v4</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">          </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">          </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./site</span>
 </code></pre></div>
-<h2 id="repeat10-number5000">Запуск в разных средах с параметрами: repeat=10, number=5000</h2>
-<h3 id="_2">Локальный запуск функций выдал следующий результат</h3>
-<p><img alt="Локальный запуск" src="" title="C:\Users\user\Documents\GitHub\Itmo-studies\lab_4\Local.png" /></p>
-<h3 id="google-colab">Запуск в Google Colab</h3>
-<p><img alt="Colab" src="" title="C:\Users\user\Documents\GitHub\Itmo-studies\lab_4\Collab.png" /></p>
-<h2 id="_3">Сравнение производительности</h2>
-<h3 id="_4">Оба графика показывают одинаковую тенденцию: итеративный метод быстрее рекурсивного</h3>
-<h3 id="n">Форма кривых схожа: экспоненциальный рост времени выполнения с увеличением n</h3>
-<h3 id="n_1">Разрыв в производительности между двумя методами увеличивается с ростом n</h3>
-<table>
-<thead>
-<tr>
-<th>Параметр</th>
-<th style="text-align: right;">Collab</th>
-<th style="text-align: right;">Local</th>
-<th style="text-align: right;">Ускорение</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Среднее время</td>
-<td style="text-align: right;">0.085</td>
-<td style="text-align: right;">0.034</td>
-<td style="text-align: right;">2.50x</td>
-</tr>
-<tr>
-<td>Максимальное</td>
-<td style="text-align: right;">0.270</td>
-<td style="text-align: right;">0.110</td>
-<td style="text-align: right;">2.45x</td>
-</tr>
-<tr>
-<td>Минимальное</td>
-<td style="text-align: right;">0.002</td>
-<td style="text-align: right;">0.001</td>
-<td style="text-align: right;">2.00x</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_5">Ключевые выводы:</h2>
-<h3 id="1">1. Производительность локальной среды выше</h3>
-<p><strong>Локальный компьютер в ~2.5 раза быстрее удалённого (Colab)</strong><br />
-Это ожидаемо: удалённые среды имеют накладные расходы на сеть, виртуализацию</p>
-<h3 id="2">2. Относительная эффективность методов сохраняется</h3>
-<p><strong>Итеративный метод быстрее рекурсивного в обоих случаях:</strong>
-- <strong>Colab</strong>: в ~1.8 раза при n=300
-- <strong>Local</strong>: в ~1.83 раза при n=300</p>
-<p>Пропорция сохраняется, несмотря на разницу в абсолютных значениях</p>
-<h3 id="3">3. Характер роста времени</h3>
-<ul>
-<li><strong>Рекурсивный метод</strong>: более крутой рост (накладные расходы на вызовы функций, стек)</li>
-<li><strong>Итеративный метод</strong>: более пологий рост (меньше накладных расходов)</li>
-</ul>
+<h3 id="sourcecraft-cicd">SourceCraft CI/CD</h3>
+<p>Файл <code>.sourcecraft/sites.yaml</code>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">site</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./site</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+</code></pre></div></p>
+<h3 id="sourcecraft">Настройки в Sourcecraft</h3>
+<p>Создан персональный токен доступа (PAT)
+После пуша папки site сайт автоматически стал доступен по адресу https://endryu-bogun.sourcecraft.site/my-site.</p>
+<h2 id="_6">Результаты</h2>
+<h3 id="github-pages">GitHub Pages</h3>
+<p>ссылка на сайт:https://p3120-505199.github.io/Sourcecraft/<br />
+ссылка на репозиторий: https://github.com/P3120-505199/Sourcecraft</p>
+<h3 id="sourcecraft-sites">SourceCraft Sites</h3>
+<p>ссылка на сайт: https://endryu-bogun.sourcecraft.site/my-site <br />
+ссылка на репозиторий: https://sourcecraft.dev/endryu-bogun/my-site</p>
+<h2 id="_7">Выводы</h2>
+<p>В ходе выполнения лабораторной работы были:
+1. Освоены принципы работы GitHub Actions (сборка MkDocs, деплой на GitHub Pages).
+2. Изучена конфигурация SourceCraft Sites через sites.yaml (декларативный подход).
+3. Приобретён опыт работы с двумя независимыми удалёнными репозиториями (origin и sourcecraft)</p>
 
 
 
