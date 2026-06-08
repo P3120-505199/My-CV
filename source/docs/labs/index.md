@@ -17,6 +17,9 @@
 | 9 | [Лабораторная работа №2.3](lab2.3.md) 
 | 10 | [Лабораторная работа №2.4](lab2.4.md) 
 | 11 | [Лабораторная работа №2.5](lab2.5.md) 
+| 12 | [Лабораторная работа №2.6](lab2.6.md) 
+| 13 | [Лабораторная работа №2.7](https://colab.research.google.com/drive/1tfR_kC1ejq0Q9B_seD7hC4DVtZblRsuT?usp=sharing) 
+| 14 | [Лабораторная работа №2.8](https://colab.research.google.com/drive/1bmFTmrp_W0ctV245wd9p6iKW4mm0ldUO?usp=sharing) 
 
 
 ## Структура отчета

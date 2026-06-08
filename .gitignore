@@ -1,4 +1,7 @@
 venv/ 
+myenv/
 __pycache__/ 
 *.log 
 /site/ 
+myenv/ 
+__pycache__/ 

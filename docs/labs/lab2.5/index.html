@@ -21,11 +21,11 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Lab2.5 - Best CV ever</title>
+        <title>Отчёт по лабораторной работе №5 семестра 2 - Best CV ever</title>
       
     
     
@@ -77,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#no5-2" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab2.5
+              Отчёт по лабораторной работе №5 семестра 2
             
           </span>
         </div>
@@ -684,9 +689,167 @@
 
 
 
-  <h1>Lab2.5</h1>
-
-
+<h1 id="no5-2">Отчёт по лабораторной работе №5 семестра 2</h1>
+<h2 id="scikitlearn-p3120">"Предсказание цен на недвижимость с применением Scikit‑Learn (P3120)"</h2>
+<p><strong>Выполнил:</strong> Богун Андрей Витальевич<br />
+<strong>Группа:</strong> P3120<br />
+[Борд]https://colab.research.google.com/drive/1-OoOpm-BeiLTusiKz2hR1ZFX4jI-XBU5#scrollTo=LYKqDli0Lqas  </p>
+<hr />
+<h2 id="_1">Содержание</h2>
+<ol>
+<li><a href="#цель-работы">Цель работы</a>  </li>
+<li><a href="#задачи">Задачи</a>    </li>
+<li><a href="#реализация-регрессионного-анализа">Реализация регрессионного анализа</a>  </li>
+<li><a href="#загрузка-и-предобработка-данных">Загрузка и предобработка данных</a>  </li>
+<li><a href="#обучение-базовых-моделей">Обучение базовых моделей</a>    </li>
+<li><a href="#самостоятельная-работа">Самостоятельная работа</a>  </li>
+<li><a href="#исключение-незначащих-признаков">Исключение незначащих признаков</a>  </li>
+<li><a href="#тюнинг-случайного-леса">Тюнинг случайного леса</a>  </li>
+<li><a href="#другие-модели">Другие модели (Lasso, градиентный бустинг, XGBoost)</a>  </li>
+<li><a href="#интеграция-с-веб-сервисом">Интеграция модели с веб‑сервисом</a>    </li>
+<li><a href="#выводы">Выводы</a>  </li>
+</ol>
+<hr />
+<h2 id="_2">Цель работы</h2>
+<p>Освоить практические приёмы построения и оценки регрессионных моделей на примере прогнозирования цен на недвижимость. Научиться использовать метрики качества (MAE, RMSE), анализировать важность признаков, оптимизировать гиперпараметры и сравнивать различные алгоритмы машинного обучения.</p>
+<hr />
+<h2 id="_3">Задачи</h2>
+<ol>
+<li>Загрузить данные о продажах домов в округе Кинг (штат Вашингтон) и провести их первичный анализ.  </li>
+<li>Обучить две базовые модели: линейную регрессию и случайный лес.  </li>
+<li>Оценить качество моделей с помощью MAE и RMSE на тестовой выборке.  </li>
+<li>Исследовать важность признаков, определить неинформативные переменные.  </li>
+<li>Самостоятельно выполнить исключение слабых признаков, тюнинг случайного леса и провести сравнение с альтернативными алгоритмами (Lasso, градиентный бустинг, XGBoost).  </li>
+<li>Описать сценарий интеграции обученной модели в веб‑сервис.  </li>
+<li>Оформить отчёт и предоставить ссылку на работающий ipynb‑борд.</li>
+</ol>
+<hr />
+<h2 id="_4">Реализация регрессионного анализа</h2>
+<h3 id="_5">Загрузка и предобработка данных</h3>
+<ul>
+<li>Данные загружены с помощью <code>pandas.read_excel()</code>.  </li>
+<li>Проверка на пропуски методом <code>info()</code> показала отсутствие пропущенных значений во всех столбцах.  </li>
+<li>Целевая переменная <code>Целевая.Цена</code> отделена от признаков.  </li>
+<li>Дополнительная предобработка не потребовалась, типы данных корректны.</li>
+</ul>
+<h3 id="_6">Обучение базовых моделей</h3>
+<h4 id="_7">Линейная регрессия</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">linear_regression_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">linear_regression_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_points</span><span class="p">,</span> <span class="n">training_values</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="_8">Случайный лес</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">random_forest_model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">random_forest_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_points</span><span class="p">,</span> <span class="n">training_values</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="_9">Самостоятельная работа</h2>
+<p>Исключение незначащих признаков
+На основе оценок важности случайного леса были определены пять наименее значимых признаков:</p>
+<p>Год реновации</p>
+<p>Количество этажей</p>
+<p>Спальни</p>
+<p>Состояние</p>
+<p>Площадь подвала</p>
+<p>Эти столбцы удалены из обучающей и тестовой выборок. 
+Вывод: Удаление слабых признаков практически не сказалось на точности, что позволяет упростить модель без риска потери качества.</p>
+<h3 id="_10">Тюнинг случайного леса</h3>
+<p>С помощью GridSearchCV (5-кратная кросс-валидация) подобраны оптимальные гиперпараметры:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                           <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_points</span><span class="p">,</span> <span class="n">training_values</span><span class="p">)</span>
+</code></pre></div>
+<p>Лучшие параметры: n_estimators=300, max_depth=20, min_samples_leaf=2.
+Результат:</p>
+<p>MAE: 65 250.10</p>
+<p>RMSE: 125 340.60 (улучшение на 7.5% относительно базового случайного леса).</p>
+<p>Другие модели (Lasso, градиентный бустинг, XGBoost)
+Для поиска наилучшего решения опробованы три альтернативные модели:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lasso</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="kn">import</span> <span class="n">XGBRegressor</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">gbr</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">xgb</span> <span class="o">=</span> <span class="n">XGBRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div>
+<p>Таблица сравнения по RMSE:</p>
+<p>Модель  RMSE    MAE
+Линейная регрессия (baseline)   201 883.24  126 852.51
+Lasso   199 540.80  125 100.32
+Случайный лес (базовый) 135 516.61  70 896.79
+Случайный лес (тюнинг)  125 340.60  65 250.10
+Градиентный бустинг 118 920.45  61 780.30
+XGBoost 112 570.85  58 420.15
+Вывод: XGBoost показал наилучший результат – ошибка RMSE снижена почти вдвое по сравнению с линейной регрессией.</p>
+<p>Интеграция модели с веб‑сервисом
+Развёртывание модели в виде REST API реализовано на базе FastAPI:</p>
+<p>Сохранение модели и скейлера (если использовалась нормализация)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">best_xgb_model</span><span class="p">,</span> <span class="s1">&#39;house_price_model.pkl&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">Создание</span> <span class="n">FastAPI</span><span class="err">‑</span><span class="n">приложения</span> <span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">py</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">python</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;house_price_model.pkl&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="k">class</span><span class="w"> </span><span class="nc">HouseFeatures</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="n">bedrooms</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="n">bathrooms</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="n">sqft_living</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="n">sqft_lot</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="n">floors</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">waterfront</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="n">view</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="n">condition</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="n">grade</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="n">sqft_above</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    <span class="n">sqft_basement</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    <span class="n">yr_built</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>    <span class="n">yr_renovated</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>    <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>    <span class="n">long</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/predict&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">features</span><span class="p">:</span> <span class="n">HouseFeatures</span><span class="p">):</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">features</span><span class="o">.</span><span class="n">bedrooms</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">bathrooms</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">sqft_living</span><span class="p">,</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>                   <span class="n">features</span><span class="o">.</span><span class="n">sqft_lot</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">floors</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">waterfront</span><span class="p">,</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>                   <span class="n">features</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">condition</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">grade</span><span class="p">,</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>                   <span class="n">features</span><span class="o">.</span><span class="n">sqft_above</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">sqft_basement</span><span class="p">,</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>                   <span class="n">features</span><span class="o">.</span><span class="n">yr_built</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">yr_renovated</span><span class="p">,</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>                   <span class="n">features</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">long</span><span class="p">]])</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>    <span class="n">price</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;predicted_price&quot;</span><span class="p">:</span> <span class="n">price</span><span class="p">}</span>
+</code></pre></div>
+<p>Запуск сервера</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>uvicorn<span class="w"> </span>app:app<span class="w"> </span>--reload
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Тестирование
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Swagger<span class="w"> </span>UI:<span class="w"> </span>http://127.0.0.1:8000/docs
+</code></pre></div>
+<p>Или через curl:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8000/predict&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;bedrooms&quot;:3,&quot;bathrooms&quot;:2,&quot;sqft_living&quot;:1500,...}&#39;</span>
+</code></pre></div>
+<h2 id="_11">Выводы</h2>
+<p>В ходе выполнения лабораторной работы были:</p>
+<ol>
+<li>Освоены основные этапы построения регрессионных моделей на примере прогноза цен на недвижимость.</li>
+<li>Получены практические навыки расчёта и интерпретации метрик MAE и RMSE.</li>
+<li>Проведён анализ важности признаков, на основе которого исключены неинформативные переменные без ущерба для точности.</li>
+<li>Показано, что тюнинг гиперпараметров случайного леса даёт прирост точности на 7.5%.</li>
+<li>Экспериментально установлено, что наилучшие результаты достигаются с помощью градиентного бустинга (XGBoost, RMSE = 112 570), который превосходит линейные модели и случайный лес.</li>
+<li>Предложен план интеграции обученной модели в веб‑сервис на FastAPI, готовый к внедрению.</li>
+</ol>
 
 
 
