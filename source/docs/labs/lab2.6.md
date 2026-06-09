@@ -3,7 +3,7 @@
 
 **Выполнил:** Богун Андрей Витальевич  
 **Группа:** P3120  
-[Ссылка на Colab](https://colab.research.google.com/drive/1-OoOpm-BeiLTusiKz2hR1ZFX4jI-XBU5#scrollTo=LYKqDli0Lqas)  
+[Ссылка на Colab](https://colab.research.google.com/drive/1hbFlXpPbgMTGlSUsJ4SP9KI5VXSiqX4q?usp=sharing)  
 
 ---
 
